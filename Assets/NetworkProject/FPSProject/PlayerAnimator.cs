@@ -34,6 +34,15 @@ public class PlayerAnimator : NetworkBehaviour
         xScale = HealthPivot.transform.localScale.x;
         Score.OnChange += ScoreChangeOperation;
         Health.OnChange += HealthChangeOperation;
+        
+    }
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        ScoreText.text = Score.Value.ToString();
+        float targetScale = ((float)(Health.Value) / (100)) * xScale;
+        HealthPivot.transform.localScale = new Vector3(targetScale,
+            HealthPivot.transform.localScale.y, HealthPivot.transform.localScale.z);
     }
 
     private void HealthChangeOperation(float prev, float next, bool asServer)
@@ -106,10 +115,10 @@ public class PlayerAnimator : NetworkBehaviour
         {
             //EventManager?.EventOperation(InstanceFinder.ClientManager.Connection,
             //        NetworkObject.ObjectId.ToString(),
-            //        "score",Score.ToString());
+            //        "score", Score.Value.ToString());
             //EventManager?.EventOperation(InstanceFinder.ClientManager.Connection,
             //       NetworkObject.ObjectId.ToString(),
-            //       "health", Health.ToString());
+            //       "health", Health.Value.ToString());
         }
     }
 
@@ -143,13 +152,15 @@ public class PlayerAnimator : NetworkBehaviour
 
     internal void SetHealth(string addonmessage)
     {
-       int currentHealth =  int.Parse(addonmessage);
+        Health.Value = int.Parse(addonmessage);
+        int currentHealth =  int.Parse(addonmessage);
         float targetScale = ((float)(currentHealth) / (100)) * xScale;
         HealthPivot.transform.localScale = new Vector3(targetScale, HealthPivot.transform.localScale.y, HealthPivot.transform.localScale.z);
     }
 
     internal void SetScore(string addonmessage)
     {
+        Score.Value = int.Parse(addonmessage);
         ScoreText.text = " " + addonmessage;
     }
 #if UNITY_EDITOR
