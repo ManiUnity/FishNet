@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using FishNet;
+using FishNet.Component.Transforming;
 using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
@@ -110,6 +111,17 @@ public class MissileFire : NetworkBehaviour
                 //SendScoreOfPlayerToServer(null, from.ObjectId.ToString(), "score", fromanimator.Score.ToString());
                 if (toanimator.Health.Value < 0)
                 {
+                    if (IsServer && (!IsOwner))
+                    {
+                        Debug.Log("Parenting >>>>> ");
+                    }
+                    toanimator.gameObject.GetComponent<CharacterMove>().EventObjects.ForEach(data => {
+                        data.GetComponent<NetworkObject>().GiveOwnership(null);
+                        data.GetComponent<NetworkTransform>().GiveOwnership(null);
+                        data.transform.parent = null;
+                        data.ResetToInitialState();
+                      
+                    });
                     InstanceFinder.ServerManager.Despawn(toanimator.gameObject);
                 }
             }
@@ -129,7 +141,6 @@ public class MissileFire : NetworkBehaviour
         Vector3 p0 = startPoint;
         Vector3 p2 = endPoint;
         Vector3 p1 = (startPoint + endPoint) / 2f + Vector3.up * curveHeight;
-
         // Interpolate along the curve
         transform.position = BezierCurve(p0, p1, p2, t);
     }

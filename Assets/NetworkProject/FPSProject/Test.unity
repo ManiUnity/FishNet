@@ -505,6 +505,9 @@ MonoBehaviour:
   IsServer: 0
   ShowChangeTransform: 0
   Network: {fileID: 0}
+  initialState:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
   OwnerId: -1
 --- !u!114 &246230903
 MonoBehaviour:
@@ -552,7 +555,7 @@ MonoBehaviour:
   <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 3297994903
-  <SceneId>k__BackingField: 14164780253598932528
+  <SceneId>k__BackingField: 14164780250820008085
   <AssetPathHash>k__BackingField: 0
 --- !u!114 &246230905
 MonoBehaviour:
@@ -946,6 +949,9 @@ MonoBehaviour:
   IsServer: 0
   ShowChangeTransform: 0
   Network: {fileID: 0}
+  initialState:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
   OwnerId: -1
 --- !u!1 &539014632
 GameObject:
@@ -1299,6 +1305,9 @@ MonoBehaviour:
   IsServer: 0
   ShowChangeTransform: 0
   Network: {fileID: 0}
+  initialState:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
   OwnerId: -1
 --- !u!114 &855892949
 MonoBehaviour:
@@ -1346,7 +1355,7 @@ MonoBehaviour:
   <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 3297994903
-  <SceneId>k__BackingField: 14164780253646743345
+  <SceneId>k__BackingField: 14164780251745407306
   <AssetPathHash>k__BackingField: 0
 --- !u!114 &855892951
 MonoBehaviour:
@@ -1750,6 +1759,9 @@ MonoBehaviour:
   IsServer: 0
   ShowChangeTransform: 0
   Network: {fileID: 0}
+  initialState:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
   OwnerId: -1
 --- !u!114 &1037131211
 MonoBehaviour:
@@ -1963,6 +1975,9 @@ MonoBehaviour:
   IsServer: 0
   ShowChangeTransform: 0
   Network: {fileID: 0}
+  initialState:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
   OwnerId: -1
 --- !u!114 &1043269856
 MonoBehaviour:
@@ -3171,6 +3186,9 @@ MonoBehaviour:
   IsServer: 0
   ShowChangeTransform: 0
   Network: {fileID: 0}
+  initialState:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
   OwnerId: -1
 --- !u!1 &1954208299
 GameObject:
@@ -3372,4 +3390,7 @@ MonoBehaviour:
   IsServer: 0
   ShowChangeTransform: 0
   Network: {fileID: 0}
+  initialState:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
   OwnerId: -1

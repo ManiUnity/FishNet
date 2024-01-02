@@ -215,6 +215,10 @@ public class EventManager : MonoBehaviour
             FindObjectOfType<NetworkOwnership>().SendMessageA(InstanceFinder.ClientManager.Connection, playerid, message);
         }
     }
+    public void SetServerOwnerShip()
+    {
+       
+    }
     void SpawnAt()
     {
      //   Moves = FindObjectsOfType<CharacterMove>().ToList();

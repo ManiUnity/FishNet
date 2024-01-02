@@ -82,6 +82,7 @@ public class CharacterMove : MonoBehaviour
     }
     public List<string> Weapons;
     public GameObject ChildWeapon;
+    public List<ObjectEventType> EventObjects = new List<ObjectEventType>();
     internal void SetWeapon(string v)
     {
         Weapons ??= new List<string>();
@@ -101,6 +102,7 @@ public class CharacterMove : MonoBehaviour
                     bool IsOwner = owner.IsOwner;
                     if (OwnerId < 0)
                         ChildWeapon.transform.SetParent(transform);
+                    EventObjects.Add(owner);
                 }
             }catch(Exception exa)
             {
@@ -154,8 +156,8 @@ public class CharacterMove : MonoBehaviour
 
     void SendMissileSpawn()
     {
-
-        GetComponent<NetworkOwnership>().SendMessageA(InstanceFinder.ClientManager.Connection, NetworkObject.ObjectId.ToString(), "MissileSpawn");
+        GetComponent<NetworkOwnership>().SendMessageA(InstanceFinder.ClientManager.Connection,
+            NetworkObject.ObjectId.ToString(), "MissileSpawn");
     }
     void ClientMissileSpawn()
     {
@@ -163,7 +165,9 @@ public class CharacterMove : MonoBehaviour
     }
     private void OnDestroy()
     {
+       
         PlayerEvents.HitEvent -= EventOpreation;
+        EventObjects.ForEach(data => { data.transform.SetParent(null); });
     }
     public void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -222,6 +226,6 @@ public class CharacterMove : MonoBehaviour
             }
         }
     }
-    
+
 
 }

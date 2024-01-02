@@ -148,6 +148,8 @@ public class PlayerAnimator : NetworkBehaviour
     internal void HealthMinus()
     {
         Health.Value--;
+        if (IsServer && Health.Value<1)
+            GetComponent<NetworkObject>().GiveOwnership(InstanceFinder.ClientManager.Connection);
     }
 
     internal void SetHealth(string addonmessage)

@@ -25,7 +25,7 @@ public class ObjectEventType : MonoBehaviour
     private Transform previousTransform;
     public bool ShowChangeTransform;
     public NetworkObject Network;
-
+    private bool IsParent = false;
     /// <summary>
     /// Start 
     /// </summary>
@@ -37,7 +37,32 @@ public class ObjectEventType : MonoBehaviour
         InstanceFinder.ClientManager.OnConnectedClients += ConectedClientsCallback;
         Network = gameObject.GetComponent<NetworkObject>();
     }
+    [System.Serializable]
+    public class InitialTransformState
+    {
+        public Vector3 position;
+        public Quaternion rotation;
+    }
 
+    [SerializeField]
+    private InitialTransformState initialState;
+
+    private void Awake()
+    {
+        SaveInitialState();
+    }
+
+    public void SaveInitialState()
+    {
+        initialState.position = transform.position;
+        initialState.rotation = transform.rotation;
+    }
+
+    public void ResetToInitialState()
+    {
+        transform.position = initialState.position;
+        transform.rotation = initialState.rotation;
+    }
     private void ConectedClientsCallback(ConnectedClientsArgs obj)
     {
         IsServer = InstanceFinder.IsServerStarted;
@@ -91,20 +116,31 @@ public class ObjectEventType : MonoBehaviour
     }
     void LateUpdate()
     {
+
         if (Network != null && Network.Owner != null)
         {
             OwnerId = Network.Owner.ClientId;
             IsOwner = true;
+           
         }
         else
         {
             IsOwner = false;
+        }
+        if(IsServer && IsParent)
+        {
+           
         }
     }
     internal void SetLocalOwnership(int clientId)
     {
         if (OwnerId != clientId)
             OwnerId = clientId;
+    }
+
+    internal void MakeNullifyAndDespawn(object p)
+    {
+        
     }
 }
 
