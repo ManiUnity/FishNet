@@ -116,11 +116,9 @@ public class MissileFire : NetworkBehaviour
                         Debug.Log("Parenting >>>>> ");
                     }
                     toanimator.gameObject.GetComponent<CharacterMove>().EventObjects.ForEach(data => {
-                        data.GetComponent<NetworkObject>().GiveOwnership(null);
-                        data.GetComponent<NetworkTransform>().GiveOwnership(null);
+                        data.GetComponent<NetworkObject>().RemoveOwnership();
                         data.transform.parent = null;
                         data.ResetToInitialState();
-                      
                     });
                     InstanceFinder.ServerManager.Despawn(toanimator.gameObject);
                 }

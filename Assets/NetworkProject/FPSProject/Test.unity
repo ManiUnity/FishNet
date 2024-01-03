@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 39095243}
   - component: {fileID: 39095242}
   - component: {fileID: 39095244}
+  - component: {fileID: 39095245}
   m_Layer: 0
   m_Name: Broadcaster
   m_TagString: Untagged
@@ -188,6 +189,19 @@ MonoBehaviour:
   missilePrefab: {fileID: 8008308491172053862, guid: 04ea4173bb2f6433d862c410d410e635, type: 3}
   PlayerIds: 
   NetWorkCount: 0
+--- !u!114 &39095245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39095241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2a13760e0fb430690ba6841b987b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialMemory: 0
 --- !u!1 &77398242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,7 +1281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855892942}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 23.01, y: 6.8, z: 40.87}
+  m_LocalPosition: {x: 18.9, y: 6.8, z: 40.87}
   m_LocalScale: {x: 5.0100546, y: 5.0100546, z: 5.0100546}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1344,7 +1358,7 @@ MonoBehaviour:
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
-    Position: {x: 23.01, y: 6.8, z: 40.87}
+    Position: {x: 18.9, y: 6.8, z: 40.87}
     Rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     LocalScale: {x: 5.0100546, y: 5.0100546, z: 5.0100546}
   _isNetworked: 1

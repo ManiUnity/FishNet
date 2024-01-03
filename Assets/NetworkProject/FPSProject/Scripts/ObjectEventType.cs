@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FishNet;
+using FishNet.Component.Transforming;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Transporting;
@@ -141,6 +142,14 @@ public class ObjectEventType : MonoBehaviour
     internal void MakeNullifyAndDespawn(object p)
     {
         
+    }
+    private void OnDisable()
+    {
+        if (GetComponent<NetworkObject>() != null)
+            GetComponent<NetworkObject>().enabled = true;
+        if (GetComponent<NetworkTransform>() != null)
+            GetComponent<NetworkTransform>().enabled = true;
+
     }
 }
 

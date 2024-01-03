@@ -108,7 +108,7 @@ public class PlayerAnimator : NetworkBehaviour
         }
     }
 
-    [ServerRpc(RunLocally = true)]
+    //[ServerRpc(RunLocally = true)]
     internal void SendJoinScore()
     {
         if (IsClient && IsOwner && IsServer)
